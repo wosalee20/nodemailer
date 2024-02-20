@@ -45,10 +45,10 @@ app.post("/api/send-email", upload.single("file"), async (req, res) => {
 			subject: "Payment Confirmation",
 			html: `
                 <p>Dear ${firstName} ${lastName},</p>
-                <p>Your payment details for ${paymentReason} for the amount of ${amount} have been received and are being processed. Thank you!</p
-		<p>Regards,</p>
+                <p>Your payment details for ${paymentReason} have been received and are being processed. Thank you!</p>
+                <p>Regards,</p>
+                <p> if you did not initiate this transaction kindly disregard this Email!</p>
                 <p>admin@mymanagementteam.online</p>
-		<p> if you did not initiate this transaction kindly disregard this Email!</p>
             `,
 		};
 
