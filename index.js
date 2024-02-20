@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import serverless from 'serverless-http';
 import nodemailer from "nodemailer";
 import multer from "multer";
 import dotenv from "dotenv";
@@ -100,4 +99,4 @@ app.post("/api/send-email", upload.single("file"), async (req, res) => {
 // 	console.log(`Server is running on port ${PORT}`);
 // });
 
-module.exports.handler = serverless(app);
+export default app;
