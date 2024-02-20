@@ -1,12 +1,13 @@
 import express from "express";
 import cors from "cors";
+import serverless from 'serverless-http';
 import nodemailer from "nodemailer";
 import multer from "multer";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
 
 const storage = multer.memoryStorage(); // Use memory storage to handle file uploads without saving to disk
 const upload = multer({ storage: storage });
@@ -95,8 +96,8 @@ app.post("/api/send-email", upload.single("file"), async (req, res) => {
 	}
 });
 
-app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+// 	console.log(`Server is running on port ${PORT}`);
+// });
 
-export default app;
+module.exports.handler = serverless(app);
